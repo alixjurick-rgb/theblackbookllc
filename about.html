@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About Lisa Jurick | The Blackbook LLC</title>
-<meta name="description" content="Meet Lisa Jurick, owner of The Blackbook LLC, offering personalized closet editing and wardrobe organization in Bethesda, Potomac, Chevy Chase, Rockville, and nearby NW DC.">
+<title>About Lisa Jurick | The Blackbook</title>
+<meta name="description" content="Lisa Jurick, owner of The Blackbook LLC, comes to your home for private closet editing in Bethesda, Potomac, Chevy Chase, Rockville, and nearby Northwest DC.">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0A0A'/%3E%3Ctext x='32' y='44' font-family='Didot,Bodoni 72,Georgia,serif' font-size='38' fill='%23F4EDE3' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
@@ -14,15 +14,20 @@
 
 <header class="site" id="top">
   <div class="wrap nav">
-    <a class="brand" href="index.html" aria-label="The Blackbook LLC, home"><span class="name">The Blackbook</span><span class="llc">LLC</span></a>
-    <ul>
-      <li class="hide-sm"><a href="about.html">About</a></li>
-      <li class="hide-sm"><a href="index.html#approach">Approach</a></li>
-      <li class="hide-sm"><a href="index.html#services">Services</a></li>
-      <li class="hide-sm"><a href="index.html#process">Process</a></li>
-      <li class="hide-sm"><a href="index.html#faq">FAQ</a></li>
-      <li><a class="btn" href="index.html#contact">Book a consult</a></li>
-    </ul>
+    <a class="brand" href="index.html" aria-label="The Blackbook, home"><span class="name">The Blackbook</span></a>
+    <nav class="nav-bar" aria-label="Primary">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-mark" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+      <ul id="site-nav">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#how-it-works">How it works</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a class="btn" href="#contact">Request a consultation</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -39,9 +44,66 @@
         <span class="rule" aria-hidden="true"></span>
         <p>Lisa Jurick is the owner of The Blackbook LLC, offering personalized closet editing and wardrobe organization in Bethesda, Potomac, Chevy Chase, Rockville, and nearby Northwest DC.</p>
         <p>Her work is focused on judgment and hands-on help deciding what to keep, not simply folding or adding storage. The approach is simple: edit what you own, and love what you keep.</p>
+        <p>Lisa comes to the home herself. Sessions are with one organizer, not a team.</p>
         <div class="ctas">
-          <a class="btn" href="index.html#contact">Schedule a consultation</a>
-          <a class="btn ghost" href="index.html#services">View services</a>
+          <a class="btn" href="#contact">Request a consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block work about-work" id="work">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <h2>The work</h2>
+        </div>
+      </div>
+      <div class="pair-grid reveal">
+        <figure>
+          <img src="assets/work/12-white-closet-a.webp" width="1500" height="2000" alt="White built-in with hats on the shelf and hanging clothes." loading="lazy" decoding="async">
+        </figure>
+        <figure>
+          <img src="assets/work/13-white-closet-b.webp" width="1500" height="2000" alt="Jackets, handbags on hooks, and a basket of bags." loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <p class="credit reveal">Shared with permission.</p>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap grid">
+      <div class="intro reveal">
+        <p class="eyebrow gold">Begin your edit</p>
+        <h2>Is your closet overdue for an edit?</h2>
+        <p>Tell us a little about your space and what you are hoping for.</p>
+        <p class="reassure">Your details stay private. You'll hear back within one business day to schedule a 15-minute call.</p>
+        <p>A few closet photos help us prepare. You are welcome to reply with them by email.</p>
+        <div class="direct">
+          <a href="mailto:hello@theblackbookllc.com"><span class="eyebrow gold">Email</span><span class="value">hello@theblackbookllc.com</span></a>
+          <a href="tel:+15168571888"><span class="eyebrow gold">Phone</span><span class="value">516.857.1888</span></a>
+        </div>
+      </div>
+      <div class="form-panel reveal">
+        <div class="form" role="group" aria-label="Consultation request">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name" inputmode="text" aria-required="true"></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" autocomplete="email" inputmode="email" aria-required="true"></div>
+          <div class="field"><label for="f-phone">Phone (optional)</label><input id="f-phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+          <div class="field"><label for="f-town">Neighborhood</label>
+            <select id="f-town"><option value="">Select</option><option>Bethesda</option><option>Potomac</option><option>Chevy Chase</option><option>Rockville</option><option>NW DC</option><option>Elsewhere nearby</option></select></div>
+          <div class="field full"><label for="f-svc">Interested in</label>
+            <select id="f-svc"><option value="">Not sure yet</option><option>The Closet Edit</option><option>The Seasonal Switch</option><option>The Complete Reset</option><option>Maintenance Visit</option></select></div>
+          <div class="field full"><label for="f-msg">Tell us about your closet</label><textarea id="f-msg" placeholder="What is working, what is not, and how you would like it to feel."></textarea></div>
+          <div class="hp" aria-hidden="true"><label for="bbl-hp">Leave this field blank</label><input id="bbl-hp" name="bbl_hp" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="actions"><button class="btn light" type="button" id="send">Request a consultation</button></div>
+          <p id="form-status" role="status" aria-live="polite"></p>
+          <noscript><p class="noscript">Email hello@theblackbookllc.com or call 516.857.1888 to request a consultation.</p></noscript>
+        </div>
+        <div class="form-success" hidden tabindex="-1">
+          <p class="eyebrow gold">Request received</p>
+          <p class="success-title">Thank you.</p>
+          <p>We received your request and will reply within one business day to schedule a 15-minute call. If you have a few closet photos, you are welcome to reply with them by email.</p>
+          <button class="btn light" type="button" id="another">Send another request</button>
         </div>
       </div>
     </div>
@@ -53,26 +115,20 @@
     <div class="wm">The Blackbook</div>
     <div class="rule" aria-hidden="true"><span>LLC</span></div>
     <p class="tl">Edit what you own. Love what you keep.</p>
+    <p class="reach">
+      <a href="mailto:hello@theblackbookllc.com">hello@theblackbookllc.com</a>
+      <a href="tel:+15168571888">516.857.1888</a>
+    </p>
     <p class="social"><a href="https://www.instagram.com/TheBlackBook17/" target="_blank" rel="noopener noreferrer"><svg class="ig" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm.35 1.8a3.2 3.2 0 0 0-3.2 3.2v10a3.2 3.2 0 0 0 3.2 3.2h9.3a3.2 3.2 0 0 0 3.2-3.2v-10a3.2 3.2 0 0 0-3.2-3.2h-9.3zM12 7.7a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6zm0 1.75a2.55 2.55 0 1 0 0 5.1 2.55 2.55 0 0 0 0-5.1zM17.15 5.8a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1z"/></svg>Instagram</a></p>
-    <p class="legal">Closet editing &amp; wardrobe organization &nbsp;·&nbsp; Bethesda · Potomac · Chevy Chase · Rockville · NW DC &nbsp;·&nbsp; &copy; <span id="yr">2026</span> The Blackbook LLC</p>
+    <p class="privacy-note">Inquiries are used only to reply and schedule. We do not sell or share personal information. <a href="privacy.html">Privacy</a></p>
+    <p class="legal">Closet editing for homes in Bethesda, Potomac, Chevy Chase, Rockville, and nearby Northwest DC &nbsp;·&nbsp; &copy; <span id="yr">2026</span> The Blackbook LLC</p>
   </div>
 </footer>
 
-<script>
-(function(){
-  document.documentElement.classList.add("js");
-  var header = document.querySelector("header.site");
-  var onScroll = function(){ header.classList.toggle("scrolled", window.scrollY > 8); };
-  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
-  document.getElementById("yr").textContent = new Date().getFullYear();
-  var els = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
-    els.forEach(function(el){ io.observe(el); });
-  } else { els.forEach(function(el){ el.classList.add("in"); }); }
-})();
-</script>
+<div class="sticky-cta">
+  <a class="btn" href="#contact">Request a consultation</a>
+</div>
+
+<script src="site.js"></script>
 </body>
 </html>
