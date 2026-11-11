@@ -188,6 +188,7 @@ section.block{padding:clamp(72px,9vw,120px) 0}
 .visit h2{max-width:10em}
 .visit p{color:var(--ink-soft);font-size:18px}
 .visit p+p{margin-top:16px}
+.visit p.note{font-style:italic}
 @media (max-width:860px){.visit-grid{grid-template-columns:1fr}}
 
 /* FAQ */
