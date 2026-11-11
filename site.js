@@ -128,6 +128,7 @@
         phone: fieldValue("f-phone"),
         neighborhood: fieldValue("f-town"),
         service: fieldValue("f-svc"),
+        heard: (document.getElementById("f-hear") || { value: "" }).value.trim(),
         message: message,
         bbl_hp: (document.getElementById("bbl-hp").value || "").trim()
       })
@@ -144,12 +145,10 @@
         });
         document.getElementById("f-town").value = "";
         document.getElementById("f-svc").value = "";
+        var hear = document.getElementById("f-hear");
+        if (hear) hear.value = "";
         status.textContent = "";
-        if (panel) panel.classList.add("is-sent");
-        if (success) {
-          success.hidden = false;
-          success.focus();
-        }
+        window.location.assign("/thank-you");
       } else if (result.data && result.data.error === "validation") {
         status.textContent = statusFor(result.data.field);
       } else {

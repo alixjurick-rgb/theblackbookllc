@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theblackbookllc.com/sitemap.xml
