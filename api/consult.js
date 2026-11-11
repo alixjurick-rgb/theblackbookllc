@@ -18,6 +18,7 @@ const SERVICES = new Set([
   "The Seasonal Switch",
   "The Complete Reset",
   "Maintenance Visit",
+  "Another space in my home",
   "Not sure yet",
 ]);
 
