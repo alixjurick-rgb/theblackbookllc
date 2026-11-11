@@ -22,6 +22,15 @@ const SERVICES = new Set([
   "Not sure yet",
 ]);
 
+const HEARD = new Set([
+  "Google search",
+  "Google Maps",
+  "Instagram",
+  "Nextdoor",
+  "A friend or client",
+  "Other",
+]);
+
 function json(body, status) {
   return Response.json(body, {
     status,
@@ -103,7 +112,7 @@ export default {
       return json({ ok: true }, 200);
     }
 
-    for (const key of ["name", "email", "phone", "neighborhood", "service", "message"]) {
+    for (const key of ["name", "email", "phone", "neighborhood", "service", "message", "heard"]) {
       if (data[key] !== undefined && data[key] !== null && typeof data[key] !== "string") {
         return json({ ok: false, error: "validation", field: "form" }, 400);
       }
@@ -114,6 +123,7 @@ export default {
     const phone = cleanLine(data.phone, 40);
     const neighborhood = cleanLine(data.neighborhood, 40);
     const service = cleanLine(data.service, 40);
+    const heard = cleanLine(data.heard, 40);
     const message = cleanMessage(data.message);
 
     if (!name) return json({ ok: false, error: "validation", field: "name" }, 400);
@@ -125,6 +135,9 @@ export default {
       return json({ ok: false, error: "validation", field: "form" }, 400);
     }
     if (service && !SERVICES.has(service)) {
+      return json({ ok: false, error: "validation", field: "form" }, 400);
+    }
+    if (heard && !HEARD.has(heard)) {
       return json({ ok: false, error: "validation", field: "form" }, 400);
     }
     if (String(data.message ?? "").trim().length > 4000) {
@@ -143,6 +156,7 @@ export default {
       `Phone: ${phone || "(not provided)"}`,
       `Neighborhood: ${neighborhood || "(not provided)"}`,
       `Interested in: ${service || "Not sure yet"}`,
+      `How they heard about us: ${heard || "(not provided)"}`,
       "",
       "Message:",
       message || "(not provided)",
