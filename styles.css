@@ -316,3 +316,36 @@ html.js .reveal.in{opacity:1;transform:none}
   :root{--pad:20px}
   .btn{letter-spacing:.11em;padding-left:14px;padding-right:14px}
 }
+
+/* Hero photograph */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(240px,.72fr);gap:clamp(28px,4vw,64px);align-items:center;text-align:left}
+.hero .hero-copy h1{margin:0;max-width:10em;font-size:clamp(40px,5vw,68px)}
+.hero .hero-copy .hero-rule{margin-left:0}
+.hero .hero-copy .lede{margin-left:0;margin-right:0}
+.hero .hero-copy .ctas,.hero .hero-copy .areas{justify-content:flex-start}
+.hero-photo{margin:0;max-width:460px;justify-self:end}
+.hero-photo img{width:100%;height:auto;display:block;background:var(--stone)}
+.hero-photo figcaption{margin-top:12px;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* Work */
+.work h3{font-size:clamp(28px,3vw,40px);margin-bottom:18px}
+.work .note{color:var(--ink-soft);margin:-4px 0 22px;max-width:40em}
+.work .head a{text-decoration:none;border-bottom:1px solid var(--gold)}
+.pair + .pair,.finished{margin-top:clamp(52px,6vw,84px);padding-top:clamp(36px,5vw,60px);border-top:1px solid var(--line)}
+.pair-grid,.detail-grid{display:grid;gap:clamp(18px,2.4vw,32px);align-items:start}
+.pair-grid{grid-template-columns:1fr 1fr}
+.detail-grid{grid-template-columns:repeat(3,1fr)}
+.work figure{margin:0}
+.work img{width:100%;height:auto;background:var(--stone)}
+.work figcaption{margin-top:12px;font-size:15px;line-height:1.45;color:var(--ink-soft);max-width:38em}
+.shot-label{display:block;margin-bottom:4px;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+@media (max-width:860px){
+  .hero{min-height:0;display:block;align-items:stretch;padding-top:40px;padding-bottom:calc(28px + 92px)}
+  .hero-grid{display:block;text-align:center}
+  .hero .hero-copy h1,.hero .hero-copy .lede{margin-left:auto;margin-right:auto}
+  .hero .hero-copy .hero-rule{margin-left:auto;margin-right:auto}
+  .hero .hero-copy .ctas,.hero .hero-copy .areas{justify-content:center}
+  .hero-photo{max-width:420px;margin:36px auto 0;justify-self:center}
+  .hero-photo figcaption{text-align:center}
+  .pair-grid,.detail-grid{grid-template-columns:1fr}
+}
