@@ -339,7 +339,8 @@ html.js .reveal.in{opacity:1;transform:none}
 .work figure{margin:0}
 .work img{width:100%;height:auto;background:var(--stone)}
 .work figcaption{margin-top:12px;font-size:15px;line-height:1.45;color:var(--ink-soft);max-width:38em}
-.shot-label{display:block;margin-bottom:4px;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.shot-label{display:block;margin-bottom:0;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.work .credit{margin-top:clamp(36px,5vw,56px);font-size:12px;letter-spacing:.04em;color:#8a8176}
 @media (max-width:860px){
   .hero{min-height:0;display:block;align-items:stretch;padding-top:40px;padding-bottom:calc(28px + 92px)}
   .hero-grid{display:block;text-align:center}
