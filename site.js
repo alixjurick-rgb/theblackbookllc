@@ -4,9 +4,6 @@
   var header = document.querySelector("header.site");
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");
-  var panel = document.querySelector(".form-panel");
-  var success = panel ? panel.querySelector(".form-success") : null;
-
   function onScroll() {
     if (header) header.classList.toggle("scrolled", window.scrollY > 8);
   }
@@ -75,14 +72,10 @@
     if (!link) return;
     var select = document.getElementById("f-svc");
     if (!select) return;
-    if (panel && panel.classList.contains("is-sent")) {
-      panel.classList.remove("is-sent");
-      if (success) success.hidden = true;
-    }
     select.value = link.getAttribute("data-select-service") || "";
   });
 
-  var form = panel ? panel.querySelector(".form") : null;
+  var form = document.getElementById("consult-form");
   var status = document.getElementById("form-status");
   var sendBtn = document.getElementById("send");
   if (!form || !status || !sendBtn) return;
@@ -97,14 +90,8 @@
     return "Please add your name and a valid email so we can reply.";
   }
 
-  form.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" && event.target.tagName !== "TEXTAREA") {
-      event.preventDefault();
-      sendBtn.click();
-    }
-  });
-
-  sendBtn.addEventListener("click", function () {
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
     if (sendBtn.disabled) return;
     var name = fieldValue("f-name");
     var email = fieldValue("f-email");
@@ -160,15 +147,4 @@
       sendBtn.disabled = false;
     });
   });
-
-  var another = document.getElementById("another");
-  if (another) {
-    another.addEventListener("click", function () {
-      if (panel) panel.classList.remove("is-sent");
-      if (success) success.hidden = true;
-      status.textContent = "";
-      var nameField = document.getElementById("f-name");
-      if (nameField) nameField.focus();
-    });
-  }
 })();
