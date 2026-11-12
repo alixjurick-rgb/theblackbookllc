@@ -377,7 +377,7 @@ html.js .reveal.in{opacity:1;transform:none}
 .work img{width:100%;height:auto;background:var(--stone)}
 .shot{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--stone)}
 .shot img{width:100%;height:100%;object-fit:cover;object-position:center center}
-.shot img.island-before{position:relative;width:100%;height:100%;max-width:100%;object-fit:contain;object-position:center center;background:var(--stone)}
+.shot img.island-before{position:absolute;width:310.4%;height:160%;max-width:none;left:-115.7%;top:-8%;object-fit:fill}
 .work figcaption{margin-top:12px;font-size:15px;line-height:1.45;color:var(--ink-soft);max-width:38em}
 .shot-label{display:block;margin-bottom:0;font-family:var(--sans);font-size:var(--type-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:#0A0A0A}
 .work .credit{margin-top:clamp(36px,5vw,56px);font-size:12px;letter-spacing:.04em;color:#5C564E}
