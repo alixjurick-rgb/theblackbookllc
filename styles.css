@@ -35,9 +35,11 @@ a{color:inherit}
 .eyebrow{font-family:var(--sans);font-size:var(--type-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:#2A2622}
 .eyebrow.gold{color:#5C4524}
 .band .eyebrow.gold,.contact .eyebrow.gold{color:var(--gold)}
-h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:var(--track-tight);line-height:var(--leading-heading);color:var(--black);font-optical-sizing:auto}
-h2{font-size:var(--type-h2);text-wrap:balance}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:var(--track-tight);line-height:var(--leading-heading);color:var(--black);font-optical-sizing:auto;text-wrap:balance}
+h2{font-size:var(--type-h2)}
 h3{font-size:var(--type-h3)}
+p,li,blockquote,figcaption,details p{text-wrap:pretty}
+.eyebrow,.lede,.head p,.quote,.hero-title,.note,.beyond-note,.decide p,.svc h3{text-wrap:balance}
 em{font-family:var(--serif);font-style:italic}
 .rule{display:flex;align-items:center;gap:18px;color:var(--gold)}
 .rule::before,.rule::after{content:"";height:1px;background:currentColor;flex:1;opacity:.85}
@@ -114,6 +116,7 @@ header.site.nav-open{background:var(--ivory);border-bottom-color:transparent}
 .band .grid{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(36px,6vw,90px);align-items:start}
 .band .eyebrow{margin-bottom:18px}
 .band h2{color:var(--ivory)}
+#approach h2{white-space:nowrap}
 .band h2 em{color:var(--gold)}
 .band p{color:#E4DDD4;font-size:var(--type-body);line-height:var(--leading-body)}
 .band p+p{margin-top:18px}
@@ -374,7 +377,7 @@ html.js .reveal.in{opacity:1;transform:none}
 .work img{width:100%;height:auto;background:var(--stone)}
 .shot{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--stone)}
 .shot img{width:100%;height:100%;object-fit:cover;object-position:center center}
-.shot img.island-before{position:absolute;width:310.4%;height:160%;max-width:none;left:-115.7%;top:-8%;object-fit:fill}
+.shot img.island-before{position:relative;width:100%;height:100%;max-width:100%;object-fit:contain;object-position:center center;background:var(--stone)}
 .work figcaption{margin-top:12px;font-size:15px;line-height:1.45;color:var(--ink-soft);max-width:38em}
 .shot-label{display:block;margin-bottom:0;font-family:var(--sans);font-size:var(--type-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:#0A0A0A}
 .work .credit{margin-top:clamp(36px,5vw,56px);font-size:12px;letter-spacing:.04em;color:#5C564E}
