@@ -35,9 +35,11 @@ a{color:inherit}
 .eyebrow{font-family:var(--sans);font-size:var(--type-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:#2A2622}
 .eyebrow.gold{color:#5C4524}
 .band .eyebrow.gold,.contact .eyebrow.gold{color:var(--gold)}
-h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:var(--track-tight);line-height:var(--leading-heading);color:var(--black);font-optical-sizing:auto}
-h2{font-size:var(--type-h2);text-wrap:balance}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:var(--track-tight);line-height:var(--leading-heading);color:var(--black);font-optical-sizing:auto;text-wrap:balance}
+h2{font-size:var(--type-h2)}
 h3{font-size:var(--type-h3)}
+p,li,blockquote,figcaption,details p{text-wrap:pretty}
+.eyebrow,.lede,.head p,.quote,.hero-title,.note,.beyond-note,.decide p,.svc h3{text-wrap:balance}
 em{font-family:var(--serif);font-style:italic}
 .rule{display:flex;align-items:center;gap:18px;color:var(--gold)}
 .rule::before,.rule::after{content:"";height:1px;background:currentColor;flex:1;opacity:.85}
@@ -114,6 +116,7 @@ header.site.nav-open{background:var(--ivory);border-bottom-color:transparent}
 .band .grid{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(36px,6vw,90px);align-items:start}
 .band .eyebrow{margin-bottom:18px}
 .band h2{color:var(--ivory)}
+#approach h2{white-space:nowrap}
 .band h2 em{color:var(--gold)}
 .band p{color:#E4DDD4;font-size:var(--type-body);line-height:var(--leading-body)}
 .band p+p{margin-top:18px}
