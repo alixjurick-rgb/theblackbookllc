@@ -39,7 +39,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:var(--track-tig
 h2{font-size:var(--type-h2)}
 h3{font-size:var(--type-h3)}
 p,li,blockquote,figcaption,details p{text-wrap:pretty}
-.eyebrow,.lede,.head p,.quote,.hero-title,.note,.beyond-note,.decide p,.svc h3{text-wrap:balance}
+.eyebrow,.lede,.head p,.quote,.hero-title,.note,.beyond-note,.decide p,.packages-note,.svc h3{text-wrap:balance}
 em{font-family:var(--serif);font-style:italic}
 .rule{display:flex;align-items:center;gap:18px;color:var(--gold)}
 .rule::before,.rule::after{content:"";height:1px;background:currentColor;flex:1;opacity:.85}
@@ -144,9 +144,8 @@ section.block{padding:clamp(72px,9vw,120px) 0}
 .services{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .svc{background:var(--paper);padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column;gap:14px;transition:background .4s ease}
 .svc:hover{background:#fffdf9}
-.svc .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.svc .dur{font-family:var(--sans);font-weight:600;font-size:var(--type-label);letter-spacing:var(--track-label);text-transform:uppercase;color:#1A1612}
-.svc .price{font-family:var(--sans);font-weight:600;font-size:clamp(28px,3vw,34px);line-height:1;letter-spacing:-0.02em;white-space:nowrap}
+.packages-note{margin:-12px 0 28px;max-width:40em}
+.svc .dur{font-family:var(--sans);font-weight:400;font-size:14px;line-height:1.5;letter-spacing:0;text-transform:none;color:#2A2622;margin-top:2px}
 .svc .tag{display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:var(--track-label);text-transform:uppercase;color:#1A1612;border:1px solid var(--gold);padding:5px 10px;font-weight:600;margin-right:10px;vertical-align:middle}
 .svc h3{font-family:var(--serif);font-weight:600;font-size:var(--type-service);line-height:1.15}
 .svc p{color:var(--ink-soft)}
@@ -160,8 +159,7 @@ section.block{padding:clamp(72px,9vw,120px) 0}
 .svc.featured:hover{background:#141414}
 .svc.featured p,.svc.featured li{color:#E4DDD4}
 .svc.featured h3,.svc.featured .tag{color:var(--ivory)}
-.svc.featured .dur{color:#F4EDE3}
-.svc.featured .price{color:var(--ivory)}
+.svc.featured .dur{color:#E4DDD4}
 .not-included{margin-top:28px;display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,56px);align-items:start;padding:32px;border:1px solid var(--line);background:rgba(255,255,255,.35)}
 .not-included h3{font-size:var(--type-h3);font-weight:500;margin-bottom:12px}
 .not-included p{color:var(--ink-soft);font-size:15.5px;max-width:42em}
@@ -179,8 +177,6 @@ section.block{padding:clamp(72px,9vw,120px) 0}
 }
 @media (max-width:360px){
   .svc{padding:22px 16px}
-  .svc .price{font-size:24px}
-  .svc .dur{font-size:12px;letter-spacing:.04em}
 }
 
 /* Beyond the closet */
