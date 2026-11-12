@@ -39,6 +39,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:var(--track-tig
 h2{font-size:var(--type-h2)}
 h3{font-size:var(--type-h3)}
 p,li,blockquote,figcaption,details p{text-wrap:pretty}
+.nowrap{white-space:nowrap}
 .eyebrow,.lede,.head p,.quote,.hero-title,.note,.beyond-note,.decide p,.packages-note,.svc h3{text-wrap:balance}
 em{font-family:var(--serif);font-style:italic}
 .rule{display:flex;align-items:center;gap:18px;color:var(--gold)}
