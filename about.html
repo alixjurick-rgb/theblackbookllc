@@ -19,7 +19,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/styles.css?v=20261116">
+<link rel="stylesheet" href="/styles.css?v=20261117">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -102,17 +102,38 @@
         </div>
       </div>
       <div class="form-panel reveal">
-        <form class="form" id="consult-form" action="/api/consult" method="post" aria-label="Consultation request">
+        <form class="form" id="consult-form" action="/api/consult" method="post" novalidate aria-label="Consultation request">
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" inputmode="text" required></div>
           <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
-          <div class="field"><label for="f-phone">Phone (optional)</label><input id="f-phone" type="tel" autocomplete="tel" inputmode="tel"></div>
-          <div class="field"><label for="f-town">Neighborhood</label>
-            <select id="f-town"><option value="">Select</option><option>Bethesda</option><option>Potomac</option><option>Chevy Chase</option><option>Rockville</option><option>NW DC</option><option>Elsewhere nearby</option></select></div>
+          <div class="field"><label for="f-phone">Phone (optional)</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+          <div class="field"><label for="f-zip">ZIP code</label><input id="f-zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" required aria-describedby="zip-hint"><p class="field-hint" id="zip-hint">Five digits. No street&nbsp;address.</p></div>
+          <div class="field alone"><label for="f-town">Neighborhood</label>
+            <select id="f-town" name="neighborhood"><option value="">Select</option><option>Bethesda</option><option>Potomac</option><option>Chevy Chase</option><option>Rockville</option><option>NW DC</option><option>Elsewhere nearby</option></select></div>
+          <fieldset class="field full choices" id="spaces-field" aria-required="true">
+            <legend>Which spaces?</legend>
+            <p class="field-hint" id="spaces-hint">Choose any that&nbsp;apply.</p>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="spaces" value="Closet"><span>Closet</span></label>
+              <label class="choice"><input type="checkbox" name="spaces" value="Kitchen &amp; pantry"><span>Kitchen &amp;&nbsp;pantry</span></label>
+              <label class="choice"><input type="checkbox" name="spaces" value="Bathroom"><span>Bathroom</span></label>
+              <label class="choice"><input type="checkbox" name="spaces" value="Home office"><span>Home&nbsp;office</span></label>
+              <label class="choice"><input type="checkbox" name="spaces" value="Kids' room / playroom"><span>Kids' room /&nbsp;playroom</span></label>
+              <label class="choice"><input type="checkbox" name="spaces" value="Linen or utility closet"><span>Linen or utility&nbsp;closet</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="field full choices" id="timeline-field" aria-required="true">
+            <legend>Timeline</legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="timeline" value="Within 2 weeks"><span>Within 2&nbsp;weeks</span></label>
+              <label class="choice"><input type="radio" name="timeline" value="This month"><span>This&nbsp;month</span></label>
+              <label class="choice"><input type="radio" name="timeline" value="Just exploring"><span>Just&nbsp;exploring</span></label>
+            </div>
+          </fieldset>
           <div class="field full"><label for="f-svc">Interested in</label>
-            <select id="f-svc"><option value="">Not sure yet</option><option>The Closet Edit</option><option>The Seasonal Switch</option><option>The Complete Reset</option><option>Maintenance Visit</option><option>Another space in my home</option></select></div>
-          <div class="field full"><label for="f-hear">How did you hear about us? (optional)</label>
-            <select id="f-hear"><option value="">Optional</option><option>Google search</option><option>Google Maps</option><option>Instagram</option><option>Nextdoor</option><option>A friend or client</option><option>Other</option></select></div>
-          <div class="field full"><label for="f-msg">Tell us about the space</label><textarea id="f-msg" placeholder="What is working, what is not, and how you would like it to feel."></textarea></div>
+            <select id="f-svc" name="service"><option value="">Not sure yet</option><option>The Closet Edit</option><option>The Seasonal Switch</option><option>The Complete Reset</option><option>Maintenance Visit</option><option>Another space in my home</option></select></div>
+          <div class="field full"><label for="f-hear">How did you hear about&nbsp;us?</label>
+            <select id="f-hear" name="heard"><option value="">Optional</option><option>Instagram</option><option>Google</option><option>Friend or referral</option><option>Event or auction</option><option>Other</option></select></div>
+          <div class="field full"><label for="f-msg">Tell us about the space</label><textarea id="f-msg" name="message" placeholder="What is working, what is not, and how you would like it to feel."></textarea></div>
           <div class="hp" aria-hidden="true"><label for="bbl-hp">Leave this field blank</label><input id="bbl-hp" name="bbl_hp" type="text" tabindex="-1" autocomplete="off"></div>
           <div class="actions"><button class="btn light" type="submit" id="send">Request a consultation</button></div>
           <p id="form-status" role="status" aria-live="polite"></p>
@@ -143,6 +164,6 @@
   <a class="btn" href="#contact">Request a consultation</a>
 </div>
 
-<script src="/site.js?v=20261113"></script>
+<script src="/site.js?v=20261117"></script>
 </body>
 </html>

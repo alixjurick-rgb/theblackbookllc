@@ -22,12 +22,26 @@ const SERVICES = new Set([
   "Not sure yet",
 ]);
 
+const SPACES = [
+  "Closet",
+  "Kitchen & pantry",
+  "Bathroom",
+  "Home office",
+  "Kids' room / playroom",
+  "Linen or utility closet",
+];
+
+const TIMELINES = new Set([
+  "Within 2 weeks",
+  "This month",
+  "Just exploring",
+]);
+
 const HEARD = new Set([
-  "Google search",
-  "Google Maps",
   "Instagram",
-  "Nextdoor",
-  "A friend or client",
+  "Google",
+  "Friend or referral",
+  "Event or auction",
   "Other",
 ]);
 
@@ -56,6 +70,74 @@ function cleanMessage(value) {
 
 function validEmail(email) {
   return email.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function parseSpaces(value) {
+  if (!Array.isArray(value) || value.length < 1 || value.length > SPACES.length) return null;
+  const seen = new Set();
+  for (const item of value) {
+    if (typeof item !== "string") return null;
+    const space = cleanLine(item, 40);
+    if (!SPACES.includes(space) || seen.has(space)) return null;
+    seen.add(space);
+  }
+  return SPACES.filter((space) => seen.has(space));
+}
+
+export function parseInquiry(data) {
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    return { ok: false, field: "form" };
+  }
+
+  for (const key of ["name", "email", "phone", "zip", "neighborhood", "service", "message", "heard", "timeline"]) {
+    if (data[key] !== undefined && data[key] !== null && typeof data[key] !== "string") {
+      return { ok: false, field: "form" };
+    }
+  }
+
+  const name = cleanLine(data.name, 100);
+  const email = cleanLine(data.email, 254);
+  const phone = cleanLine(data.phone, 40);
+  const zip = cleanLine(data.zip, 10);
+  const neighborhood = cleanLine(data.neighborhood, 40);
+  const spaces = parseSpaces(data.spaces);
+  const timeline = cleanLine(data.timeline, 40);
+  const service = cleanLine(data.service, 40);
+  const heard = cleanLine(data.heard, 40);
+  const message = cleanMessage(data.message);
+
+  if (!name) return { ok: false, field: "name" };
+  if (!validEmail(email)) return { ok: false, field: "email" };
+  if (phone && !/^[0-9+().\-\s]+$/.test(phone)) return { ok: false, field: "form" };
+  if (!/^\d{5}$/.test(zip)) return { ok: false, field: "zip" };
+  if (neighborhood && !NEIGHBORHOODS.has(neighborhood)) return { ok: false, field: "form" };
+  if (!spaces) return { ok: false, field: "spaces" };
+  if (!TIMELINES.has(timeline)) return { ok: false, field: "timeline" };
+  if (service && !SERVICES.has(service)) return { ok: false, field: "form" };
+  if (heard && !HEARD.has(heard)) return { ok: false, field: "form" };
+  if (String(data.message ?? "").trim().length > 4000) return { ok: false, field: "message" };
+
+  return {
+    ok: true,
+    fields: { name, email, phone, zip, neighborhood, spaces, timeline, service, heard, message },
+  };
+}
+
+export function formatInquiry(fields) {
+  return [
+    `Name: ${fields.name}`,
+    `Email: ${fields.email}`,
+    `Phone: ${fields.phone || "(not provided)"}`,
+    `ZIP: ${fields.zip}`,
+    `Neighborhood: ${fields.neighborhood || "(not provided)"}`,
+    `Spaces: ${fields.spaces.join(", ")}`,
+    `Timeline: ${fields.timeline}`,
+    `Interested in: ${fields.service || "Not sure yet"}`,
+    `How they heard about us: ${fields.heard || "(not provided)"}`,
+    "",
+    "Message:",
+    fields.message || "(not provided)",
+  ].join("\n");
 }
 
 function originAllowed(request) {
@@ -112,36 +194,9 @@ export default {
       return json({ ok: true }, 200);
     }
 
-    for (const key of ["name", "email", "phone", "neighborhood", "service", "message", "heard"]) {
-      if (data[key] !== undefined && data[key] !== null && typeof data[key] !== "string") {
-        return json({ ok: false, error: "validation", field: "form" }, 400);
-      }
-    }
-
-    const name = cleanLine(data.name, 100);
-    const email = cleanLine(data.email, 254);
-    const phone = cleanLine(data.phone, 40);
-    const neighborhood = cleanLine(data.neighborhood, 40);
-    const service = cleanLine(data.service, 40);
-    const heard = cleanLine(data.heard, 40);
-    const message = cleanMessage(data.message);
-
-    if (!name) return json({ ok: false, error: "validation", field: "name" }, 400);
-    if (!validEmail(email)) return json({ ok: false, error: "validation", field: "email" }, 400);
-    if (phone && !/^[0-9+().\-\s]+$/.test(phone)) {
-      return json({ ok: false, error: "validation", field: "form" }, 400);
-    }
-    if (neighborhood && !NEIGHBORHOODS.has(neighborhood)) {
-      return json({ ok: false, error: "validation", field: "form" }, 400);
-    }
-    if (service && !SERVICES.has(service)) {
-      return json({ ok: false, error: "validation", field: "form" }, 400);
-    }
-    if (heard && !HEARD.has(heard)) {
-      return json({ ok: false, error: "validation", field: "form" }, 400);
-    }
-    if (String(data.message ?? "").trim().length > 4000) {
-      return json({ ok: false, error: "validation", field: "message" }, 400);
+    const parsed = parseInquiry(data);
+    if (!parsed.ok) {
+      return json({ ok: false, error: "validation", field: parsed.field }, 400);
     }
 
     const apiKey = String(process.env.RESEND_API_KEY || "").trim();
@@ -150,17 +205,8 @@ export default {
       return json({ ok: false, error: "send" }, 503);
     }
 
-    const text = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone || "(not provided)"}`,
-      `Neighborhood: ${neighborhood || "(not provided)"}`,
-      `Interested in: ${service || "Not sure yet"}`,
-      `How they heard about us: ${heard || "(not provided)"}`,
-      "",
-      "Message:",
-      message || "(not provided)",
-    ].join("\n");
+    const { name, email } = parsed.fields;
+    const text = formatInquiry(parsed.fields);
 
     let resendResponse;
     try {
