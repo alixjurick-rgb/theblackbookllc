@@ -80,28 +80,93 @@
   var sendBtn = document.getElementById("send");
   if (!form || !status || !sendBtn) return;
 
+  var SPACE_VALUES = [
+    "Closet",
+    "Kitchen & pantry",
+    "Bathroom",
+    "Home office",
+    "Kids' room / playroom",
+    "Linen or utility closet"
+  ];
+  var TIMELINE_VALUES = ["Within 2 weeks", "This month", "Just exploring"];
+
   function fieldValue(id) {
     return document.getElementById(id).value.trim();
   }
 
+  function checkedValues(name) {
+    return Array.prototype.map.call(
+      form.querySelectorAll('input[name="' + name + '"]:checked'),
+      function (input) { return input.value; }
+    );
+  }
+
   function statusFor(field) {
     if (field === "message") return "Please shorten your note and try again.";
+    if (field === "zip") return "Please enter a 5-digit ZIP code.";
+    if (field === "spaces") return "Please choose at least one space.";
+    if (field === "timeline") return "Please select a timeline.";
     if (field === "form") return "Please check the form and try again.";
     return "Please add your name and a valid email so we can reply.";
+  }
+
+  function clearInvalid() {
+    Array.prototype.forEach.call(form.querySelectorAll("[aria-invalid='true']"), function (el) {
+      el.removeAttribute("aria-invalid");
+    });
+    Array.prototype.forEach.call(form.querySelectorAll(".is-invalid"), function (el) {
+      el.classList.remove("is-invalid");
+    });
+  }
+
+  function fail(field, el) {
+    status.textContent = statusFor(field);
+    if (el) {
+      el.setAttribute("aria-invalid", "true");
+      var wrap = el.closest(".field");
+      if (wrap) wrap.classList.add("is-invalid");
+      el.focus();
+    }
+  }
+
+  var zipInput = document.getElementById("f-zip");
+  if (zipInput) {
+    zipInput.addEventListener("input", function () {
+      var digits = zipInput.value.replace(/\D/g, "").slice(0, 5);
+      if (zipInput.value !== digits) zipInput.value = digits;
+    });
   }
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     if (sendBtn.disabled) return;
+    clearInvalid();
     var name = fieldValue("f-name");
     var email = fieldValue("f-email");
+    var zip = fieldValue("f-zip");
+    var spaces = checkedValues("spaces").filter(function (value) {
+      return SPACE_VALUES.indexOf(value) !== -1;
+    });
+    var timeline = checkedValues("timeline")[0] || "";
     var message = fieldValue("f-msg");
-    if (!name || !email || email.indexOf("@") < 1 || email.indexOf(".") < 0) {
-      status.textContent = statusFor("email");
+    if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      fail("email", document.getElementById(name ? "f-email" : "f-name"));
+      return;
+    }
+    if (!/^\d{5}$/.test(zip)) {
+      fail("zip", zipInput);
+      return;
+    }
+    if (!spaces.length) {
+      fail("spaces", form.querySelector('input[name="spaces"]'));
+      return;
+    }
+    if (TIMELINE_VALUES.indexOf(timeline) === -1) {
+      fail("timeline", form.querySelector('input[name="timeline"]'));
       return;
     }
     if (message.length > 4000) {
-      status.textContent = statusFor("message");
+      fail("message", document.getElementById("f-msg"));
       return;
     }
     sendBtn.disabled = true;
@@ -113,7 +178,10 @@
         name: name,
         email: email,
         phone: fieldValue("f-phone"),
+        zip: zip,
         neighborhood: fieldValue("f-town"),
+        spaces: spaces,
+        timeline: timeline,
         service: fieldValue("f-svc"),
         heard: (document.getElementById("f-hear") || { value: "" }).value.trim(),
         message: message,
@@ -127,17 +195,26 @@
       });
     }).then(function (result) {
       if (result.ok && result.data && result.data.ok) {
-        ["f-name", "f-email", "f-phone", "f-msg", "bbl-hp"].forEach(function (id) {
+        ["f-name", "f-email", "f-phone", "f-zip", "f-msg", "bbl-hp"].forEach(function (id) {
           document.getElementById(id).value = "";
         });
         document.getElementById("f-town").value = "";
         document.getElementById("f-svc").value = "";
         var hear = document.getElementById("f-hear");
         if (hear) hear.value = "";
+        Array.prototype.forEach.call(form.querySelectorAll('input[name="spaces"], input[name="timeline"]'), function (input) {
+          input.checked = false;
+        });
         status.textContent = "";
         window.location.assign("/thank-you");
       } else if (result.data && result.data.error === "validation") {
-        status.textContent = statusFor(result.data.field);
+        var field = result.data.field;
+        var target = field === "zip" ? zipInput
+          : field === "spaces" ? form.querySelector('input[name="spaces"]')
+          : field === "timeline" ? form.querySelector('input[name="timeline"]')
+          : field === "message" ? document.getElementById("f-msg")
+          : document.getElementById("f-name");
+        fail(field, target);
       } else {
         status.textContent = "We could not send your request. Please try again in a moment.";
       }
