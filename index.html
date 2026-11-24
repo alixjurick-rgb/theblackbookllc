@@ -4,19 +4,23 @@
 <meta charset="utf-8">
 <meta name="google-site-verification" content="lRuv30W5_CDLHJ1OJX28wv55J2Ue1oXQ1542DlZ1FHw" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home Organizing &amp; Closet Editing in Bethesda | The Blackbook</title>
-<meta name="description" content="Boutique home organizing, with closet editing as the signature, for homes in Bethesda, Potomac, Chevy Chase, Rockville, and nearby Northwest DC.">
+<title>Closet Organizing &amp; Home Editing in Bethesda | The Blackbook</title>
+<meta name="description" content="Closet organizing and home editing in Bethesda, Potomac, Chevy Chase, Rockville, and nearby Northwest Washington DC.">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="canonical" href="https://theblackbookllc.com/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="The Blackbook">
+<meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://theblackbookllc.com/">
-<meta property="og:title" content="Home Organizing & Closet Editing in Bethesda | The Blackbook">
-<meta property="og:description" content="Boutique home organizing, with closet editing as the signature, for homes in Bethesda, Potomac, Chevy Chase, Rockville, and nearby Northwest DC.">
+<meta property="og:title" content="Closet Organizing & Home Editing in Bethesda | The Blackbook">
+<meta property="og:description" content="Closet organizing and home editing in Bethesda, Potomac, Chevy Chase, Rockville, and nearby Northwest Washington DC.">
 <meta property="og:image" content="https://theblackbookllc.com/assets/og-share.jpg">
+<meta property="og:image:alt" content="Folded clothing in a finished closet, with The Blackbook wordmark.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Home Organizing & Closet Editing in Bethesda | The Blackbook">
-<meta name="twitter:description" content="Boutique home organizing, with closet editing as the signature, for homes in Bethesda, Potomac, Chevy Chase, Rockville, and nearby Northwest DC.">
+<meta name="twitter:title" content="Closet Organizing & Home Editing in Bethesda | The Blackbook">
+<meta name="twitter:description" content="Closet organizing and home editing in Bethesda, Potomac, Chevy Chase, Rockville, and nearby Northwest Washington DC.">
 <meta name="twitter:image" content="https://theblackbookllc.com/assets/og-share.jpg">
+<meta name="twitter:image:alt" content="Folded clothing in a finished closet, with The Blackbook wordmark.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -25,24 +29,133 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "The Blackbook LLC",
-  "url": "https://theblackbookllc.com",
-  "telephone": "+1-516-857-1888",
-  "email": "hello@theblackbookllc.com",
-  "image": "https://theblackbookllc.com/assets/work/18-sweater-cubbies.webp",
-  "priceRange": "$375+",
-  "description": "Boutique home organizing, with closet editing as the signature. Edit what you own. Love what you keep.",
-  "areaServed": [
-    { "@type": "City", "name": "Bethesda", "containedInPlace": { "@type": "State", "name": "Maryland" } },
-    { "@type": "City", "name": "Potomac", "containedInPlace": { "@type": "State", "name": "Maryland" } },
-    { "@type": "City", "name": "Chevy Chase", "containedInPlace": { "@type": "State", "name": "Maryland" } },
-    { "@type": "City", "name": "Rockville", "containedInPlace": { "@type": "State", "name": "Maryland" } },
-    { "@type": "Place", "name": "Northwest DC" }
-  ],
-  "sameAs": ["https://www.instagram.com/TheBlackBook17/"],
-  "logo": "https://theblackbookllc.com/apple-touch-icon.png",
-  "founder": { "@type": "Person", "name": "Lisa Jurick" }
+  "@graph": [
+    {
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": "https://theblackbookllc.com/#business",
+      "name": "The Blackbook",
+      "legalName": "The Blackbook LLC",
+      "url": "https://theblackbookllc.com",
+      "telephone": "+1-516-857-1888",
+      "email": "hello@theblackbookllc.com",
+      "image": "https://theblackbookllc.com/assets/og-share.jpg",
+      "logo": "https://theblackbookllc.com/apple-touch-icon.png",
+      "description": "Closet organizing and home editing for homes in Bethesda, Potomac, Chevy Chase, Rockville, and Northwest Washington DC. Edit what you own. Love what you keep.",
+      "slogan": "Edit what you own. Love what you keep.",
+      "founder": {
+        "@type": "Person",
+        "name": "Lisa Jurick",
+        "jobTitle": "Owner"
+      },
+      "sameAs": ["https://www.instagram.com/TheBlackBook17/"],
+      "areaServed": [
+        { "@id": "https://theblackbookllc.com/#area-bethesda" },
+        { "@id": "https://theblackbookllc.com/#area-potomac" },
+        { "@id": "https://theblackbookllc.com/#area-chevy-chase" },
+        { "@id": "https://theblackbookllc.com/#area-rockville" },
+        { "@id": "https://theblackbookllc.com/#area-northwest-washington-dc" }
+      ]
+    },
+    {
+      "@type": "City",
+      "@id": "https://theblackbookllc.com/#area-bethesda",
+      "name": "Bethesda",
+      "containedInPlace": { "@type": "State", "name": "Maryland" }
+    },
+    {
+      "@type": "City",
+      "@id": "https://theblackbookllc.com/#area-potomac",
+      "name": "Potomac",
+      "containedInPlace": { "@type": "State", "name": "Maryland" }
+    },
+    {
+      "@type": "City",
+      "@id": "https://theblackbookllc.com/#area-chevy-chase",
+      "name": "Chevy Chase",
+      "containedInPlace": { "@type": "State", "name": "Maryland" }
+    },
+    {
+      "@type": "City",
+      "@id": "https://theblackbookllc.com/#area-rockville",
+      "name": "Rockville",
+      "containedInPlace": { "@type": "State", "name": "Maryland" }
+    },
+    {
+      "@type": "AdministrativeArea",
+      "@id": "https://theblackbookllc.com/#area-northwest-washington-dc",
+      "name": "Northwest Washington DC",
+      "containedInPlace": {
+        "@type": "City",
+        "name": "Washington",
+        "containedInPlace": { "@type": "AdministrativeArea", "name": "District of Columbia" }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://theblackbookllc.com/#service-the-closet-edit",
+      "name": "The Closet Edit",
+      "serviceType": "Closet organizing",
+      "description": "Best for a focused reset of one closet around what is actually worn.",
+      "url": "https://theblackbookllc.com/#services",
+      "provider": { "@id": "https://theblackbookllc.com/#business" },
+      "areaServed": [
+        { "@id": "https://theblackbookllc.com/#area-bethesda" },
+        { "@id": "https://theblackbookllc.com/#area-potomac" },
+        { "@id": "https://theblackbookllc.com/#area-chevy-chase" },
+        { "@id": "https://theblackbookllc.com/#area-rockville" },
+        { "@id": "https://theblackbookllc.com/#area-northwest-washington-dc" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://theblackbookllc.com/#service-the-seasonal-switch",
+      "name": "The Seasonal Switch",
+      "serviceType": "Closet organizing",
+      "description": "Best for bringing the right season forward and putting the rest away, edited as you go.",
+      "url": "https://theblackbookllc.com/#services",
+      "provider": { "@id": "https://theblackbookllc.com/#business" },
+      "areaServed": [
+        { "@id": "https://theblackbookllc.com/#area-bethesda" },
+        { "@id": "https://theblackbookllc.com/#area-potomac" },
+        { "@id": "https://theblackbookllc.com/#area-chevy-chase" },
+        { "@id": "https://theblackbookllc.com/#area-rockville" },
+        { "@id": "https://theblackbookllc.com/#area-northwest-washington-dc" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://theblackbookllc.com/#service-the-complete-reset",
+      "name": "The Complete Reset",
+      "serviceType": "Closet organizing",
+      "description": "Best for a deep edit of clothing, shoes, bags, and accessories.",
+      "url": "https://theblackbookllc.com/#services",
+      "provider": { "@id": "https://theblackbookllc.com/#business" },
+      "areaServed": [
+        { "@id": "https://theblackbookllc.com/#area-bethesda" },
+        { "@id": "https://theblackbookllc.com/#area-potomac" },
+        { "@id": "https://theblackbookllc.com/#area-chevy-chase" },
+        { "@id": "https://theblackbookllc.com/#area-rockville" },
+        { "@id": "https://theblackbookllc.com/#area-northwest-washington-dc" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://theblackbookllc.com/#service-maintenance",
+      "name": "Maintenance",
+      "alternateName": "Maintenance Visit",
+      "serviceType": "Closet organizing",
+      "description": "Best as a tune-up for a closet already edited. Returning clients only. A first visit has a three-hour minimum.",
+      "url": "https://theblackbookllc.com/#services",
+      "provider": { "@id": "https://theblackbookllc.com/#business" },
+      "areaServed": [
+        { "@id": "https://theblackbookllc.com/#area-bethesda" },
+        { "@id": "https://theblackbookllc.com/#area-potomac" },
+        { "@id": "https://theblackbookllc.com/#area-chevy-chase" },
+        { "@id": "https://theblackbookllc.com/#area-rockville" },
+        { "@id": "https://theblackbookllc.com/#area-northwest-washington-dc" }
+      ]
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -539,7 +652,7 @@
   <a class="btn" href="#contact">Request a consultation</a>
 </div>
 
-<script src="/site.js?v=20261117"></script>
+<script src="/site.js?v=20261124"></script>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
