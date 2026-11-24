@@ -1,3 +1,12 @@
+/* ------------------------------------------------------------------
+   GOOGLE REVIEW LINK
+   Google Business Profile review URL. The profile name is
+   "The Blackbook LLC". No review button is rendered from this yet.
+   ------------------------------------------------------------------ */
+window.BLACKBOOK_CONFIG = {
+  GOOGLE_REVIEW_URL: "https://g.page/r/CQ4ra9AMk4kIECE/review"
+};
+
 (function () {
   document.documentElement.classList.add("js");
 
